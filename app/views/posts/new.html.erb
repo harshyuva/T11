@@ -1,0 +1,14 @@
+<h1>post#new</h1>
+
+<%= form_with scope: :post , url: user_posts_path(current_user), method: :post do |form|%>
+
+  <%= form.label "title"%><br>
+  <%= form.text_field :title%><br>
+
+  <%= form.label "body"%><br>
+  <%= form.text_field :body%><br>
+
+  
+
+  <%= form.submit%>
+<%end%>

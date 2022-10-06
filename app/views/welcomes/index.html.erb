@@ -1,0 +1,27 @@
+<h1> Hii users 🙋🏻‍♂️</h1>
+<h2> Create the users posts </h2>
+<table border =1> 
+  <tr>
+
+
+<th><% if user_signed_in? %></th>
+<%@users.each do |user|%><br>
+    <%=user.email%>
+    <%= link_to "Post", user_posts_path(user.id)%>|
+    <%= button_to "delete", users_path, method: :delete  %>
+
+<%end%>
+
+  Logged in as <strong><%= current_user.email %></strong>. |
+  <%= link_to "add new post",new_user_post_path(current_user.id)%> |
+
+  <%= link_to 'Edit profile', edit_user_registration_path %> |
+  <%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+  
+
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path  %> |
+  <%= link_to "Login", new_user_session_path %>  |
+<% end %>
+     </tr>
+  </table>

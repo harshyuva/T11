@@ -1,0 +1,35 @@
+<h1>Posts details </h1>
+
+
+ <table border =1> 
+	<tr>
+		<th>title</th>
+		<th>body</th>
+		<th>show</th>
+	    <th>edit</th>
+	    <th>destroy</th>
+    </tr>
+
+	<%@posts.each do |post|%>
+	<tr>
+		<%#debugger%>
+		
+		<% if current_user.id == post.user_id%> 
+		<p>Show the details edit & show the user posts</p>
+		<td><%= post.title%></td>
+		<td><%= post.body%></td> 
+		<td><%= link_to "show",user_post_path(post.user_id,post.id) %></td>
+
+		<td><%= link_to "edit",edit_user_post_path(post.user_id,post.id)%></td>
+
+		<td><%= button_to 'Destroy',user_post_path(post.user_id,post.id),method: :delete,data: { confirm: 'Are you sure?'} %></td>
+
+	</tr>
+	<% end %>
+	<%end%>
+
+
+</table>
+
+
+
