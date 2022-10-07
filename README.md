@@ -23,5 +23,3 @@ Things you may want to cover:
 
 * ...
 # T11
-# T11
-# T11
