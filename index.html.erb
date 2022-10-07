@@ -1,0 +1,47 @@
+<h1>Home</h1>
+<table border=1> 
+	<tr>
+
+<td><% if user_signed_in? %></td>
+
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path %> |
+  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+ 
+    <table border =1> 
+	<tr>
+   <br>
+		<h2>Post </h2>
+		<th>title</th>
+		<th>body</th>
+		<th>show</th>
+	    <th>edit</th>
+	    <th>destroy</th>
+	    <th>add comment</th>
+	    <th>comment show</th> 
+    </tr>
+        <% @posts.each do |post| %>
+    <tr>
+    	<td><%= post.title%></td>
+		<td><%= post.body%></td> 
+		
+                           <%= link_to "add new post",new_post_path(:user_id)%> 
+
+        <td><%= link_to "show",post_path(post.id) %></td>
+
+		<td><%= link_to "edit", edit_post_path(post.id)%></td>
+
+		<td><%= button_to 'Destroy',post_path(post.id),method: :delete,data: { confirm: 'Are you sure?' } %></td>
+		<td><%= link_to "add new comment", new_post_comment_path(post.id)%></td>
+		<td><%= link_to "show",post_comments_path(post.id)%></td>
+	</tr>
+	<% end %>
+  <% else %>
+  <%= link_to "Sign up", new_user_registration_path %> |
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+<%#end%>
+
+   </tr>
+  </table>
+
